@@ -1,0 +1,1 @@
+from src.infra.api_consumer.rick_morty_api_consumer import RickMortyApiConsumer
