@@ -1,4 +1,4 @@
-from src.infra.api_consumer.rick_morty_api_consumer import RickMortyApiConsumer
+from src.infra.api_consumer import RickMortyApiConsumer
 
 
 def test_get_episode():
