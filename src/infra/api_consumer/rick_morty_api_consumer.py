@@ -6,9 +6,7 @@ from collections import namedtuple
 
 class RickMortyApiConsumer:
     def __init__(self):
-        self.get_episode_response = namedtuple(
-            "get_episode", "status_code request response"
-        )
+        self.get_response = namedtuple("GET_INFO", "status_code request response")
 
     def get_episode(self, id_episode: int) -> Tuple[int, Type[Request], Dict]:
         """Retorna informações sobre um episódio.
@@ -20,7 +18,17 @@ class RickMortyApiConsumer:
             method="GET", url=f"https://rickandmortyapi.com/api/episode/{id_episode}"
         )
         response = self.__send_http_request(request.prepare())
-        return self.get_episode_response(
+        return self.get_response(
+            status_code=response.status_code, request=request, response=response.json()
+        )
+
+    def get_character(self, id_character):
+        request = requests.Request(
+            method="GET",
+            url=f"https://rickandmortyapi.com/api/character/{id_character}",
+        )
+        response = self.__send_http_request(request.prepare())
+        return self.get_response(
             status_code=response.status_code, request=request, response=response.json()
         )
 
