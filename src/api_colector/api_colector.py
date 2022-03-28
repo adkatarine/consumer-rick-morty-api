@@ -11,7 +11,7 @@ class RickMortyApiColector:
 
     def info_character(self, id_character: int) -> dict:
         rm_api_response = self.rm_api_consumer.get_character(id_character)
-        return self.format_info_character(rm_api_response)
+        return self.format_info_character(rm_api_response, id_character)
 
     def info_character_complete(self, id_character: int) -> dict:
         rm_api_response = self.rm_api_consumer.get_character(id_character)
@@ -27,8 +27,9 @@ class RickMortyApiColector:
         }
         return formated_ep
 
-    def format_info_character(self, character: dict):
+    def format_info_character(self, character: dict, id_character: int):
         return {
+            "id": id_character,
             "name": character.response["name"],
             "status": character.response["status"],
             "image": character.response["image"],
