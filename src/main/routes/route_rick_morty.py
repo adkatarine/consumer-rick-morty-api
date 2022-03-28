@@ -10,7 +10,7 @@ def get_episode(id: int):
     return info_episode
 
 
-@rick_morty_router.get("/rm/episode/{id}")
+@rick_morty_router.get("/rm/character/{id}")
 def get_character(id: int):
-    info_episode = RickMortyApiColector().info_episode(id)
+    info_episode = RickMortyApiColector().info_character_complete(id)
     return info_episode
